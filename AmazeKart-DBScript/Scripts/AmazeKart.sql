@@ -1,28 +1,28 @@
 ﻿USE [AmazeKart]
 GO
-/****** Object:  Table [dbo].[Categories]    Script Date: 4/19/2023 10:46:16 PM ******/
+/****** Object:  Table [dbo].[Categories]    Script Date: 4/24/2023 10:35:17 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
 GO
 CREATE TABLE [dbo].[Categories](
-	[CategoryId] [int] IDENTITY(1,1) NOT NULL,
+	[Id] [int] IDENTITY(1,1) NOT NULL,
 	[CategoryName] [varchar](500) NOT NULL,
 	[Description] [varchar](max) NOT NULL,
 	[Active] [bit] NOT NULL,
  CONSTRAINT [PK_Categories] PRIMARY KEY CLUSTERED 
 (
-	[CategoryId] ASC
+	[Id] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Customers]    Script Date: 4/19/2023 10:46:16 PM ******/
+/****** Object:  Table [dbo].[Customers]    Script Date: 4/24/2023 10:35:17 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
 GO
 CREATE TABLE [dbo].[Customers](
-	[CustomerId] [int] IDENTITY(1,1) NOT NULL,
+	[Id] [int] IDENTITY(1,1) NOT NULL,
 	[FirstName] [varchar](200) NOT NULL,
 	[LastName] [varchar](200) NOT NULL,
 	[Phone] [varchar](50) NOT NULL,
@@ -47,11 +47,11 @@ CREATE TABLE [dbo].[Customers](
 	[CreatedDate] [datetime] NOT NULL,
  CONSTRAINT [PK_Customers] PRIMARY KEY CLUSTERED 
 (
-	[CustomerId] ASC
+	[Id] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[OrderDetails]    Script Date: 4/19/2023 10:46:16 PM ******/
+/****** Object:  Table [dbo].[OrderDetails]    Script Date: 4/24/2023 10:35:17 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -62,21 +62,16 @@ CREATE TABLE [dbo].[OrderDetails](
 	[Quantity] [int] NOT NULL,
 	[Price] [numeric](18, 0) NOT NULL,
 	[Discount] [numeric](18, 0) NOT NULL,
-	[OrderAmount] [numeric](18, 0) NOT NULL,
- CONSTRAINT [PK_OrderDetails] PRIMARY KEY CLUSTERED 
-(
-	[OrderId] ASC,
-	[ProductId] ASC
-)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+	[OrderAmount] [numeric](18, 0) NOT NULL
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Orders]    Script Date: 4/19/2023 10:46:16 PM ******/
+/****** Object:  Table [dbo].[Orders]    Script Date: 4/24/2023 10:35:17 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
 GO
 CREATE TABLE [dbo].[Orders](
-	[OrderId] [int] IDENTITY(1,1) NOT NULL,
+	[Id] [int] IDENTITY(1,1) NOT NULL,
 	[OrderNumber] [varchar](100) NOT NULL,
 	[OrderDate] [datetime] NOT NULL,
 	[CustomerId] [int] NOT NULL,
@@ -90,47 +85,47 @@ CREATE TABLE [dbo].[Orders](
 	[TransactionReferenceNumber] [varchar](500) NOT NULL,
  CONSTRAINT [PK_Orders] PRIMARY KEY CLUSTERED 
 (
-	[OrderId] ASC
+	[Id] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[PaymentTypes]    Script Date: 4/19/2023 10:46:16 PM ******/
+/****** Object:  Table [dbo].[PaymentTypes]    Script Date: 4/24/2023 10:35:17 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
 GO
 CREATE TABLE [dbo].[PaymentTypes](
-	[PaymentId] [int] IDENTITY(1,1) NOT NULL,
+	[Id] [int] IDENTITY(1,1) NOT NULL,
 	[Type] [varchar](100) NOT NULL,
  CONSTRAINT [PK_PaymentTypes] PRIMARY KEY CLUSTERED 
 (
-	[PaymentId] ASC
+	[Id] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[ProductCatalogs]    Script Date: 4/19/2023 10:46:16 PM ******/
+/****** Object:  Table [dbo].[ProductCatalogs]    Script Date: 4/24/2023 10:35:17 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
 GO
 CREATE TABLE [dbo].[ProductCatalogs](
-	[CatalogId] [int] IDENTITY(1,1) NOT NULL,
+	[Id] [int] IDENTITY(1,1) NOT NULL,
 	[ProductId] [int] NOT NULL,
 	[ProductImage] [varchar](500) NOT NULL,
 	[MediaType] [varchar](500) NOT NULL,
  CONSTRAINT [PK_ProductCatalogs] PRIMARY KEY CLUSTERED 
 (
-	[CatalogId] ASC
+	[Id] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Products]    Script Date: 4/19/2023 10:46:16 PM ******/
+/****** Object:  Table [dbo].[Products]    Script Date: 4/24/2023 10:35:17 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
 GO
 CREATE TABLE [dbo].[Products](
-	[ProductId] [int] IDENTITY(1,1) NOT NULL,
+	[Id] [int] IDENTITY(1,1) NOT NULL,
 	[SKU] [varchar](50) NOT NULL,
 	[ProductName] [varchar](100) NOT NULL,
 	[SupplierId] [int] NOT NULL,
@@ -143,17 +138,17 @@ CREATE TABLE [dbo].[Products](
 	[DiscountValue] [decimal](18, 0) NOT NULL,
  CONSTRAINT [PK_Products] PRIMARY KEY CLUSTERED 
 (
-	[ProductId] ASC
+	[Id] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Suppliers]    Script Date: 4/19/2023 10:46:16 PM ******/
+/****** Object:  Table [dbo].[Suppliers]    Script Date: 4/24/2023 10:35:17 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
 GO
 CREATE TABLE [dbo].[Suppliers](
-	[SupplierId] [int] IDENTITY(1,1) NOT NULL,
+	[Id] [int] IDENTITY(1,1) NOT NULL,
 	[CompanyName] [varchar](500) NOT NULL,
 	[ContactFirstName] [varchar](100) NOT NULL,
 	[ContactLastName] [varchar](100) NOT NULL,
@@ -167,17 +162,32 @@ CREATE TABLE [dbo].[Suppliers](
 	[Email] [varchar](50) NOT NULL,
  CONSTRAINT [PK_Suppliers] PRIMARY KEY CLUSTERED 
 (
-	[SupplierId] ASC
+	[Id] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
+ALTER TABLE [dbo].[Orders]  WITH CHECK ADD  CONSTRAINT [FK_Orders_Customers] FOREIGN KEY([CustomerId])
+REFERENCES [dbo].[Customers] ([Id])
+GO
+ALTER TABLE [dbo].[Orders] CHECK CONSTRAINT [FK_Orders_Customers]
+GO
 ALTER TABLE [dbo].[Orders]  WITH CHECK ADD  CONSTRAINT [FK_Orders_PaymentTypes] FOREIGN KEY([PaymentId])
-REFERENCES [dbo].[PaymentTypes] ([PaymentId])
+REFERENCES [dbo].[PaymentTypes] ([Id])
 GO
 ALTER TABLE [dbo].[Orders] CHECK CONSTRAINT [FK_Orders_PaymentTypes]
 GO
 ALTER TABLE [dbo].[ProductCatalogs]  WITH CHECK ADD  CONSTRAINT [FK_ProductCatalogs_Products] FOREIGN KEY([ProductId])
-REFERENCES [dbo].[Products] ([ProductId])
+REFERENCES [dbo].[Products] ([Id])
 GO
 ALTER TABLE [dbo].[ProductCatalogs] CHECK CONSTRAINT [FK_ProductCatalogs_Products]
+GO
+ALTER TABLE [dbo].[Products]  WITH CHECK ADD  CONSTRAINT [FK_Products_Categories] FOREIGN KEY([CategoryId])
+REFERENCES [dbo].[Categories] ([Id])
+GO
+ALTER TABLE [dbo].[Products] CHECK CONSTRAINT [FK_Products_Categories]
+GO
+ALTER TABLE [dbo].[Products]  WITH CHECK ADD  CONSTRAINT [FK_Products_Suppliers] FOREIGN KEY([SupplierId])
+REFERENCES [dbo].[Suppliers] ([Id])
+GO
+ALTER TABLE [dbo].[Products] CHECK CONSTRAINT [FK_Products_Suppliers]
 GO
