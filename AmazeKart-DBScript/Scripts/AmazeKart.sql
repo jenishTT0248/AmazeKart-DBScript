@@ -44,6 +44,7 @@ CREATE TABLE [dbo].[Customers](
 	[ShipState] [varchar](100) NOT NULL,
 	[ShipPostalCode] [varchar](50) NOT NULL,
 	[ShipCountry] [varchar](50) NOT NULL,
+	[Active] [bit] NOT NULL,
 	[CreatedDate] [datetime] NOT NULL,
  CONSTRAINT [PK_Customers] PRIMARY KEY CLUSTERED 
 (
@@ -97,6 +98,7 @@ GO
 CREATE TABLE [dbo].[PaymentTypes](
 	[Id] [int] IDENTITY(1,1) NOT NULL,
 	[Type] [varchar](100) NOT NULL,
+	[Active] [bit] NOT NULL,
  CONSTRAINT [PK_PaymentTypes] PRIMARY KEY CLUSTERED 
 (
 	[Id] ASC
@@ -113,6 +115,7 @@ CREATE TABLE [dbo].[ProductCatalogs](
 	[ProductId] [int] NOT NULL,
 	[ProductImage] [varchar](500) NOT NULL,
 	[MediaType] [varchar](500) NOT NULL,
+	[Active] [bit] NOT NULL,
  CONSTRAINT [PK_ProductCatalogs] PRIMARY KEY CLUSTERED 
 (
 	[Id] ASC
@@ -136,6 +139,7 @@ CREATE TABLE [dbo].[Products](
 	[UnitsInStock] [varchar](50) NOT NULL,
 	[DiscountType] [varchar](50) NOT NULL,
 	[DiscountValue] [decimal](18, 0) NOT NULL,
+	[Active] [bit] NOT NULL,
  CONSTRAINT [PK_Products] PRIMARY KEY CLUSTERED 
 (
 	[Id] ASC
@@ -160,6 +164,7 @@ CREATE TABLE [dbo].[Suppliers](
 	[Country] [varchar](50) NOT NULL,
 	[Phone] [varchar](50) NOT NULL,
 	[Email] [varchar](50) NOT NULL,
+	[Active] [bit] NOT NULL,
  CONSTRAINT [PK_Suppliers] PRIMARY KEY CLUSTERED 
 (
 	[Id] ASC
