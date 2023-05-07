@@ -114,7 +114,7 @@ SET QUOTED_IDENTIFIER ON
 GO
 CREATE TABLE [dbo].[PaymentDetails](
 	[Id] [int] IDENTITY(1,1) NOT NULL,
-	[OrderId] [int] NOT NULL,
+	[OrderId] [int] NULL,
 	[Amount] [decimal](18, 0) NOT NULL,
 	[Status] [varchar](100) NOT NULL,
 	[CreatedDate] [datetime] NOT NULL,
