@@ -1,6 +1,6 @@
 ﻿USE [AmazeKart]
 GO
-/****** Object:  Table [dbo].[CartDetails]    Script Date: 5/7/2023 7:12:36 PM ******/
+/****** Object:  Table [dbo].[CartDetails]    Script Date: 5/7/2023 7:19:19 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -17,7 +17,7 @@ CREATE TABLE [dbo].[CartDetails](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Categories]    Script Date: 5/7/2023 7:12:36 PM ******/
+/****** Object:  Table [dbo].[Categories]    Script Date: 5/7/2023 7:19:19 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -33,7 +33,7 @@ CREATE TABLE [dbo].[Categories](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Customers]    Script Date: 5/7/2023 7:12:36 PM ******/
+/****** Object:  Table [dbo].[Customers]    Script Date: 5/7/2023 7:19:19 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -62,14 +62,14 @@ CREATE TABLE [dbo].[Customers](
 	[ShipPostalCode] [varchar](50) NOT NULL,
 	[ShipCountry] [varchar](50) NOT NULL,
 	[Active] [bit] NOT NULL,
-	[CreatedDate] [datetime] NOT NULL,
+	[CreatedDate] [datetime2](7) NOT NULL,
  CONSTRAINT [PK_Customers] PRIMARY KEY CLUSTERED 
 (
 	[Id] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[OrderDetails]    Script Date: 5/7/2023 7:12:36 PM ******/
+/****** Object:  Table [dbo].[OrderDetails]    Script Date: 5/7/2023 7:19:19 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -83,7 +83,7 @@ CREATE TABLE [dbo].[OrderDetails](
 	[OrderAmount] [numeric](18, 0) NOT NULL
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Orders]    Script Date: 5/7/2023 7:12:36 PM ******/
+/****** Object:  Table [dbo].[Orders]    Script Date: 5/7/2023 7:19:19 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -91,7 +91,7 @@ GO
 CREATE TABLE [dbo].[Orders](
 	[Id] [int] IDENTITY(1,1) NOT NULL,
 	[OrderNumber] [varchar](100) NOT NULL,
-	[OrderDate] [datetime] NOT NULL,
+	[OrderDate] [datetime2](7) NOT NULL,
 	[CustomerId] [int] NOT NULL,
 	[GrossAmount] [decimal](18, 0) NOT NULL,
 	[GrossDiscountAmount] [decimal](18, 0) NOT NULL,
@@ -107,7 +107,7 @@ CREATE TABLE [dbo].[Orders](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[PaymentDetails]    Script Date: 5/7/2023 7:12:36 PM ******/
+/****** Object:  Table [dbo].[PaymentDetails]    Script Date: 5/7/2023 7:19:19 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -117,14 +117,14 @@ CREATE TABLE [dbo].[PaymentDetails](
 	[OrderId] [int] NULL,
 	[Amount] [decimal](18, 0) NOT NULL,
 	[Status] [varchar](100) NOT NULL,
-	[CreatedDate] [datetime] NOT NULL,
+	[CreatedDate] [datetime2](7) NOT NULL,
  CONSTRAINT [PK_PaymentDetails] PRIMARY KEY CLUSTERED 
 (
 	[Id] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[ProductCatalogs]    Script Date: 5/7/2023 7:12:36 PM ******/
+/****** Object:  Table [dbo].[ProductCatalogs]    Script Date: 5/7/2023 7:19:19 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -141,7 +141,7 @@ CREATE TABLE [dbo].[ProductCatalogs](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Products]    Script Date: 5/7/2023 7:12:36 PM ******/
+/****** Object:  Table [dbo].[Products]    Script Date: 5/7/2023 7:19:19 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -165,7 +165,7 @@ CREATE TABLE [dbo].[Products](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Suppliers]    Script Date: 5/7/2023 7:12:36 PM ******/
+/****** Object:  Table [dbo].[Suppliers]    Script Date: 5/7/2023 7:19:19 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
