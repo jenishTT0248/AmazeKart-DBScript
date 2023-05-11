@@ -1,6 +1,6 @@
 ﻿USE [AmazeKart]
 GO
-/****** Object:  Table [dbo].[CartDetails]    Script Date: 5/7/2023 9:33:53 PM ******/
+/****** Object:  Table [dbo].[CartDetails]    Script Date: 5/12/2023 12:08:12 AM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -17,7 +17,7 @@ CREATE TABLE [dbo].[CartDetails](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Categories]    Script Date: 5/7/2023 9:33:53 PM ******/
+/****** Object:  Table [dbo].[Categories]    Script Date: 5/12/2023 12:08:13 AM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -33,7 +33,22 @@ CREATE TABLE [dbo].[Categories](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Customers]    Script Date: 5/7/2023 9:33:53 PM ******/
+/****** Object:  Table [dbo].[Colors]    Script Date: 5/12/2023 12:08:13 AM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Colors](
+	[Id] [int] IDENTITY(1,1) NOT NULL,
+	[ColorName] [varchar](50) NOT NULL,
+	[Active] [bit] NOT NULL,
+ CONSTRAINT [PK_Colors] PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[Customers]    Script Date: 5/12/2023 12:08:13 AM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -69,7 +84,7 @@ CREATE TABLE [dbo].[Customers](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[OrderDetails]    Script Date: 5/7/2023 9:33:53 PM ******/
+/****** Object:  Table [dbo].[OrderDetails]    Script Date: 5/12/2023 12:08:13 AM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -83,7 +98,7 @@ CREATE TABLE [dbo].[OrderDetails](
 	[OrderAmount] [numeric](18, 0) NOT NULL
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Orders]    Script Date: 5/7/2023 9:33:53 PM ******/
+/****** Object:  Table [dbo].[Orders]    Script Date: 5/12/2023 12:08:13 AM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -107,7 +122,7 @@ CREATE TABLE [dbo].[Orders](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[PaymentDetails]    Script Date: 5/7/2023 9:33:53 PM ******/
+/****** Object:  Table [dbo].[PaymentDetails]    Script Date: 5/12/2023 12:08:13 AM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -124,7 +139,7 @@ CREATE TABLE [dbo].[PaymentDetails](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[ProductCatalogs]    Script Date: 5/7/2023 9:33:53 PM ******/
+/****** Object:  Table [dbo].[ProductCatalogs]    Script Date: 5/12/2023 12:08:13 AM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -141,7 +156,24 @@ CREATE TABLE [dbo].[ProductCatalogs](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Products]    Script Date: 5/7/2023 9:33:53 PM ******/
+/****** Object:  Table [dbo].[ProductDetails]    Script Date: 5/12/2023 12:08:13 AM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[ProductDetails](
+	[Id] [int] IDENTITY(1,1) NOT NULL,
+	[ProductId] [int] NOT NULL,
+	[SizeId] [int] NOT NULL,
+	[ColorId] [int] NOT NULL,
+	[Active] [bit] NOT NULL,
+ CONSTRAINT [PK_ProductDetails] PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[Products]    Script Date: 5/12/2023 12:08:13 AM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -152,8 +184,6 @@ CREATE TABLE [dbo].[Products](
 	[ProductName] [varchar](100) NOT NULL,
 	[SupplierId] [int] NOT NULL,
 	[CategoryId] [int] NOT NULL,
-	[Size] [varchar](50) NOT NULL,
-	[Color] [varchar](50) NOT NULL,
 	[UnitWeight] [decimal](18, 0) NOT NULL,
 	[UnitsInStock] [bigint] NOT NULL,
 	[DiscountType] [varchar](50) NOT NULL,
@@ -165,7 +195,22 @@ CREATE TABLE [dbo].[Products](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Suppliers]    Script Date: 5/7/2023 9:33:53 PM ******/
+/****** Object:  Table [dbo].[Sizes]    Script Date: 5/12/2023 12:08:13 AM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Sizes](
+	[Id] [int] IDENTITY(1,1) NOT NULL,
+	[SizeName] [varchar](50) NOT NULL,
+	[Active] [bit] NOT NULL,
+ CONSTRAINT [PK_Sizes] PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[Suppliers]    Script Date: 5/12/2023 12:08:13 AM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -214,6 +259,21 @@ ALTER TABLE [dbo].[ProductCatalogs]  WITH CHECK ADD  CONSTRAINT [FK_ProductCatal
 REFERENCES [dbo].[Products] ([Id])
 GO
 ALTER TABLE [dbo].[ProductCatalogs] CHECK CONSTRAINT [FK_ProductCatalogs_Products]
+GO
+ALTER TABLE [dbo].[ProductDetails]  WITH CHECK ADD  CONSTRAINT [FK_ProductDetails_Colors] FOREIGN KEY([ColorId])
+REFERENCES [dbo].[Colors] ([Id])
+GO
+ALTER TABLE [dbo].[ProductDetails] CHECK CONSTRAINT [FK_ProductDetails_Colors]
+GO
+ALTER TABLE [dbo].[ProductDetails]  WITH CHECK ADD  CONSTRAINT [FK_ProductDetails_Products] FOREIGN KEY([ProductId])
+REFERENCES [dbo].[Products] ([Id])
+GO
+ALTER TABLE [dbo].[ProductDetails] CHECK CONSTRAINT [FK_ProductDetails_Products]
+GO
+ALTER TABLE [dbo].[ProductDetails]  WITH CHECK ADD  CONSTRAINT [FK_ProductDetails_Sizes] FOREIGN KEY([SizeId])
+REFERENCES [dbo].[Sizes] ([Id])
+GO
+ALTER TABLE [dbo].[ProductDetails] CHECK CONSTRAINT [FK_ProductDetails_Sizes]
 GO
 ALTER TABLE [dbo].[Products]  WITH CHECK ADD  CONSTRAINT [FK_Products_Categories] FOREIGN KEY([CategoryId])
 REFERENCES [dbo].[Categories] ([Id])
